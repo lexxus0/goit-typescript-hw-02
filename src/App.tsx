@@ -7,7 +7,7 @@ import ImageModal from "./components/ImageModal/ImageModal";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import SearchBar from "./components/LoadMoreBtn";
+import SearchBar from "./components/SearchBar";
 import {
   selectError,
   selectImages,
