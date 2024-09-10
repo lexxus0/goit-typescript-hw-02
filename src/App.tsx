@@ -1,32 +1,19 @@
 import { fetchImages } from "./redux/images/operations";
 import { useEffect, useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "./redux/store";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import Loader from "./components/Loader/Loader";
 import ImageModal from "./components/ImageModal/ImageModal";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./components/SearchBar/SearchBar";
 import {
   selectError,
   selectImages,
   selectIsLoading,
 } from "./redux/images/selectors";
 import { clearImages } from "./redux/images/slice";
-
-const useAppDispatch: () => AppDispatch = useDispatch;
-const useAppSelector: (selector: (state: RootState) => unknown) => unknown =
-  useSelector;
-
-interface Images {
-  id: string;
-  description: string;
-  urls: {
-    small: string;
-    regular: string;
-  };
-}
+import { Image } from "./redux/images/slice";
 
 const App = () => {
   const [query, setQuery] = useState<string>("");
@@ -36,7 +23,7 @@ const App = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();
-  const images = useAppSelector(selectImages) as Images[];
+  const images = useAppSelector(selectImages) as Image[];
   const error = useAppSelector(selectError) as string | null;
   const isLoading = useAppSelector(selectIsLoading) as boolean;
 

@@ -1,27 +1,15 @@
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
-import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../redux/hooks";
 import { selectImages } from "../../redux/images/selectors";
+import { Image } from "../../redux/images/slice";
 
 type Foo = {
   onOpenModal: (small: string) => void;
 };
 
-interface Images {
-  id: string;
-  description: string;
-  urls: {
-    small: string;
-    regular: string;
-  };
-}
-
-const useAppSelector: (selector: (state: RootState) => unknown) => unknown =
-  useSelector;
-
 const ImageGallery: React.FC<Foo> = ({ onOpenModal }) => {
-  const images = useAppSelector(selectImages) as Images[];
+  const images = useAppSelector(selectImages) as Image[];
 
   return (
     <ul className={css.galleryList}>

@@ -13,7 +13,7 @@ const INITIAL_STATE: ImageState = {
   error: null,
 };
 
-interface Image {
+export interface Image {
   id: string;
   description: string;
   urls: {
